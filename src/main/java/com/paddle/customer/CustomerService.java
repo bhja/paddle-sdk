@@ -25,9 +25,15 @@ public class CustomerService extends ApiResource {
         this.baseUrl = baseUrl;
     }
 
-    public Customer createCustomer(CustomerCreateParams params) throws PaddleException,PaddleError {
+    /**
+     * Creates the customer .Returns 409 if already exists.
+     * @param params
+     * @return {@link Customer}
+     * @throws PaddleException
+     */
+    public Customer createCustomer(CustomerCreateParams params) throws PaddleException {
         try {
-            HttpRequest request = client.request(URI.create(String.format("%s/%s", baseUrl, CUSTOMERS)), "POST",
+            HttpRequest request = client.request(URI.create(String.format("%s/%s", baseUrl, CUSTOMERS)), POST,
                                                  HttpRequest.BodyPublishers.ofString(getObjectMapper().writeValueAsString(params)));
             HttpResponse<String> response = client.execute(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() == 201) {

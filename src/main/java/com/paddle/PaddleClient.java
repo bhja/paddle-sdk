@@ -2,6 +2,8 @@ package com.paddle;
 
 import com.paddle.customer.CustomerService;
 
+import java.util.Map;
+
 public class PaddleClient {
 
     private String apiKey;
