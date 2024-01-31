@@ -5,6 +5,7 @@ import com.paddle.exception.PaddleError;
 import com.paddle.exception.PaddleException;
 import com.paddle.http.ApiResource;
 import com.paddle.http.HTTPClient;
+import com.paddle.model.Customer;
 import com.paddle.model.PaddleResponse;
 
 import java.io.IOException;

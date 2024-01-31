@@ -7,19 +7,25 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Map;
-
 
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class CustomerRq {
+@AllArgsConstructor
+public class Customer {
 
-  private String email;
+  private String id;
   private String name;
+  private String status;
   @JsonProperty("custom_data")
   private Map<String, Object> customData;
-
+  private String email;
+  private String locale;
+  @JsonProperty("created_at")
+  private LocalDateTime createdAt;
+  @JsonProperty("updated_at")
+  private LocalDateTime updatedAt;
 }
