@@ -1,19 +1,22 @@
 package com.paddle;
 
+import com.paddle.address.AddressService;
 import com.paddle.customer.CustomerService;
-
-import java.util.Map;
+import com.paddle.http.HTTPConfig;
 
 public class PaddleClient {
 
-    private String apiKey;
-    private String baseUrl;
-    public PaddleClient(String apiKey,String baseUrl){
-            this.apiKey = apiKey;
-            this.baseUrl = baseUrl;
-    }
-    public CustomerService customers(){
-        return new CustomerService(this.apiKey,this.baseUrl);
+    private HTTPConfig config;
+
+    public PaddleClient(HTTPConfig config) {
+       this.config = config;
     }
 
+    public CustomerService customers() {
+        return new CustomerService(this.config);
+    }
+
+    public AddressService addresses(){
+        return new AddressService(this.config);
+    }
 }

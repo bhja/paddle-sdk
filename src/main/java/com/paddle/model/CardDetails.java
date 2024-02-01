@@ -9,12 +9,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class CardDetails {
-  private String type;
-  private String last4;
-  @JsonProperty("expiry_year")
-  private String expiryYear;
-  @JsonProperty("expiry_month")
-  private String expiryMonth;
-  @JsonProperty("cardholder_name")
-  private String cardHolderName;
+    private String type;
+    private String last4;
+    @JsonProperty("expiry_year")
+    private String expiryYear;
+    @JsonProperty("expiry_month")
+    private String expiryMonth;
+    @JsonProperty("cardholder_name")
+    private String cardHolderName;
 }

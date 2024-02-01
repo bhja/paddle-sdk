@@ -11,7 +11,7 @@ import java.util.Map;
 @NoArgsConstructor
 public class PaddleResponse<T> {
 
-  private T data;
-  private Map<String, Object> meta;
-  private Map<String, Object> error;
+    private T data;
+    private Map<String, Object> meta;
+    private Map<String, Object> error;
 }

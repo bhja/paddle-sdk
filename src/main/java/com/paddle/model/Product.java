@@ -14,25 +14,25 @@ import java.util.Map;
 @NoArgsConstructor
 public class Product {
 
-  private String id;
-  private String name;
+    private String id;
+    private String name;
 
-  @JsonProperty("tax_category")
-  private String taxCategory;
-  private String description;
+    @JsonProperty("tax_category")
+    private String taxCategory;
+    private String description;
 
-  @JsonProperty("image_url")
-  private String imageUrl;
+    @JsonProperty("image_url")
+    private String imageUrl;
 
 
-  @JsonProperty("custom_data")
-  private Map<String, Object> customData;
-  private String status;
+    @JsonProperty("custom_data")
+    private Map<String, Object> customData;
+    private String status;
 
-  @JsonProperty("created_at")
-  private LocalDateTime createdAt;
+    @JsonProperty("created_at")
+    private LocalDateTime createdAt;
 
-  @JsonProperty("updated_at")
-  private LocalDateTime updatedAt;
+    @JsonProperty("updated_at")
+    private LocalDateTime updatedAt;
 
 }

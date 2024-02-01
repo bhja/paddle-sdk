@@ -12,17 +12,17 @@ import java.util.Map;
 @Setter
 @NoArgsConstructor
 public class SubscriptionItem
-    extends Item {
+        extends Item {
 
-  private boolean recurring;
+    private boolean recurring;
 
-  @JsonProperty("trial_dates")
-  private Map<String, LocalDateTime> trialDates;
+    @JsonProperty("trial_dates")
+    private Map<String, LocalDateTime> trialDates;
 
-  @JsonProperty("next_billed_at")
-  private LocalDateTime nextBilledAt;
-  @JsonProperty("previously_billed_at")
-  private LocalDateTime previouslyBilledAt;
+    @JsonProperty("next_billed_at")
+    private LocalDateTime nextBilledAt;
+    @JsonProperty("previously_billed_at")
+    private LocalDateTime previouslyBilledAt;
 
 
 }

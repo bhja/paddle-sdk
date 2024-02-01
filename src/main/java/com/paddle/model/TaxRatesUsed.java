@@ -10,8 +10,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class TaxRatesUsed {
 
-  private Total total;
+    private Total total;
 
-  @JsonProperty("tax_rate")
-  private String taxRate;
+    @JsonProperty("tax_rate")
+    private String taxRate;
 }

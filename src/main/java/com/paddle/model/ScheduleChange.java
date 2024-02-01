@@ -11,10 +11,10 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 public class ScheduleChange {
-  private String action;
-  @JsonProperty("resume_at")
-  private LocalDateTime resumeAt;
+    private String action;
+    @JsonProperty("resume_at")
+    private LocalDateTime resumeAt;
 
-  @JsonProperty("effective_at")
-  private LocalDateTime effectiveAt;
+    @JsonProperty("effective_at")
+    private LocalDateTime effectiveAt;
 }

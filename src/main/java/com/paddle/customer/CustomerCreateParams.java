@@ -18,6 +18,6 @@ public class CustomerCreateParams {
     private String name;
     private String email;
     @JsonProperty("custom_data")
-    private Map<String,Object> customData;
+    private Map<String, Object> customData;
 
 }

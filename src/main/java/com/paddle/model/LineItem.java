@@ -11,18 +11,18 @@ import java.util.Map;
 @Setter
 @NoArgsConstructor
 public class LineItem
-    extends Item {
-  private Map<String, Object> proration;
-  private String id;
-  private Total totals;
-  @JsonProperty("item_id")
-  private String itemId;
+        extends Item {
+    private Map<String, Object> proration;
+    private String id;
+    private Total totals;
+    @JsonProperty("item_id")
+    private String itemId;
 
-  @JsonProperty("unit_totals")
-  private Total unitTotal;
+    @JsonProperty("unit_totals")
+    private Total unitTotal;
 
-  @JsonProperty("price_id")
-  private String priceId;
+    @JsonProperty("price_id")
+    private String priceId;
 
 
 }

@@ -9,8 +9,8 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class UnitPrice {
-  private String amount;
+    private String amount;
 
-  @JsonProperty("currency_code")
-  private String currencyCode;
+    @JsonProperty("currency_code")
+    private String currencyCode;
 }

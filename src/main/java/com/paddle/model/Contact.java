@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Contact {
-  private String name;
-  private String email;
+    private String name;
+    private String email;
 }

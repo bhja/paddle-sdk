@@ -13,9 +13,9 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Total {
-  @JsonProperty("sub_total")
-  private String subtotal;
-  private String discount;
-  private String tax;
-  private String total;
+    @JsonProperty("sub_total")
+    private String subtotal;
+    private String discount;
+    private String tax;
+    private String total;
 }

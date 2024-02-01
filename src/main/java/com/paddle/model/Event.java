@@ -12,17 +12,17 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Event<T> {
 
-  private T data;
+    private T data;
 
-  @JsonProperty("event_id")
-  private String eventId;
-  @JsonProperty("event_type")
-  private String eventType;
+    @JsonProperty("event_id")
+    private String eventId;
+    @JsonProperty("event_type")
+    private String eventType;
 
-  @JsonProperty("occurred_at")
-  private LocalDateTime occurredAt;
-  @JsonProperty("notification_id")
-  private String notificationId;
+    @JsonProperty("occurred_at")
+    private LocalDateTime occurredAt;
+    @JsonProperty("notification_id")
+    private String notificationId;
 
 
 }

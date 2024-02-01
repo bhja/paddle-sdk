@@ -12,20 +12,20 @@ import java.util.Map;
 @Setter
 @NoArgsConstructor
 public class Business {
-  private String id;
-  private String name;
+    private String id;
+    private String name;
 
-  @JsonProperty("company_number")
-  private String companyNumber;
+    @JsonProperty("company_number")
+    private String companyNumber;
 
-  @JsonProperty("tax_identifier")
-  private String taxIdentifier;
+    @JsonProperty("tax_identifier")
+    private String taxIdentifier;
 
-  private String status;
+    private String status;
 
 
-  private List<Contact> contacts;
+    private List<Contact> contacts;
 
-  private Map<String, Object> customData;
+    private Map<String, Object> customData;
 
 }

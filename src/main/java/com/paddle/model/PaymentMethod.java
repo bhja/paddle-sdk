@@ -8,8 +8,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class PaymentMethod {
-  private String type;
+    private String type;
 
-  private CardDetails card;
+    private CardDetails card;
 
 }

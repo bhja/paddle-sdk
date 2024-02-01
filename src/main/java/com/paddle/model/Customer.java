@@ -17,15 +17,15 @@ import java.util.Map;
 @AllArgsConstructor
 public class Customer {
 
-  private String id;
-  private String name;
-  private String status;
-  @JsonProperty("custom_data")
-  private Map<String, Object> customData;
-  private String email;
-  private String locale;
-  @JsonProperty("created_at")
-  private LocalDateTime createdAt;
-  @JsonProperty("updated_at")
-  private LocalDateTime updatedAt;
+    private String id;
+    private String name;
+    private String status;
+    @JsonProperty("custom_data")
+    private Map<String, Object> customData;
+    private String email;
+    private String locale;
+    @JsonProperty("created_at")
+    private LocalDateTime createdAt;
+    @JsonProperty("updated_at")
+    private LocalDateTime updatedAt;
 }
