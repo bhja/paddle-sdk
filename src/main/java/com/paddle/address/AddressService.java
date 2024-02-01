@@ -24,20 +24,11 @@ public class AddressService
     }
 
     public Address getAddress(String customerId,String addressId) throws PaddleException{
-        try {
             HttpRequest request = httpClient().request(URI.create(String.format("%s/%s/%s/%s", baseUrl(),
                                                                                 CUSTOMERS,customerId, ADDRESSES,addressId)),
                                                        HttpMethod.GET.name(),
                                                        HttpRequest.BodyPublishers.noBody());
-            HttpResponse<String> response = httpClient().execute(request, HttpResponse.BodyHandlers.ofString());
-            if (response.statusCode() == 200) {
-                return converterResponse(response);
-            } else {
-                throw new PaddleClientException(response.body(), response.statusCode());
-            }
-        } catch (IOException | InterruptedException e) {
-            throw new PaddleException(e);
-        }
+            return get(request);
     }
 
     public Address createAddress(String customerId,AddressCreateParams params) throws PaddleException{

@@ -16,14 +16,14 @@ public class ApiResource<T> {
     protected static  final String CUSTOMER_ID="customer_id";
     protected static final String CUSTOMERS = "customers";
 
-    protected static  final String BUSINESS = "business";
+    protected static  final String BUSINESS = "businesses";
 
     private final String baseUrl;
     private final HTTPClient client;
 
     public ApiResource(HTTPConfig config) {
-        objectMapper = new ObjectMapper();
-        objectMapper.findAndRegisterModules();
+        this.objectMapper = new ObjectMapper();
+        this.objectMapper.findAndRegisterModules();
         this.client = new HTTPClient(config);
         this.baseUrl = config.getBaseUrl();
     }
@@ -56,6 +56,19 @@ public class ApiResource<T> {
         try {
             HttpResponse<String> response = httpClient().execute(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() == 201) {
+                return converterResponse(response);
+            } else {
+                throw new PaddleClientException(response.body(), response.statusCode());
+            }
+        }catch (IOException | InterruptedException e){
+            throw new PaddleException(e);
+        }
+    }
+
+    public T get(HttpRequest request) throws PaddleException{
+        try {
+            HttpResponse<String> response = httpClient().execute(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 200) {
                 return converterResponse(response);
             } else {
                 throw new PaddleClientException(response.body(), response.statusCode());

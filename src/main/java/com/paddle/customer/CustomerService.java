@@ -47,20 +47,12 @@ public class CustomerService
     }
 
     public Customer getCustomer(String customerId) throws PaddleException {
-        try {
             HttpRequest request = httpClient().request(httpClient().queryParameters(String.format("%s/%s", baseUrl(),
                                                                                                   CUSTOMERS),
                                                                                     Map.of(CUSTOMER_ID, customerId)),
                                                        HttpMethod.GET.name(),
                                                        HttpRequest.BodyPublishers.noBody());
-            HttpResponse<String> response = httpClient().execute(request, HttpResponse.BodyHandlers.ofString());
-            if (response.statusCode() == 200) {
-                return converterResponse(response);
-            } else {
-                throw new PaddleClientException(response.body(), response.statusCode());
-            }
-        } catch (IOException | InterruptedException e) {
-            throw new PaddleException(e);
-        }
+            return get(request);
+
     }
 }
