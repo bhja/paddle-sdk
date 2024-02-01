@@ -5,16 +5,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter @NoArgsConstructor public class Product extends PaddleBase {
+@Getter
+@Setter
+@NoArgsConstructor
+public class Product extends PaddleBase {
 
-    private String id;
-    private String name;
+  private String id;
+  private String name;
+  @JsonProperty("tax_category")
+  private String taxCategory;
+  private String description;
 
-    @JsonProperty("tax_category") private String taxCategory;
-    private String description;
+  @JsonProperty("image_url")
+  private String imageUrl;
 
-    @JsonProperty("image_url") private String imageUrl;
-
-    private String type;
+  private String type;
 
 }

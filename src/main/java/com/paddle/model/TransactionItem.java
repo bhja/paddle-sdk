@@ -1,18 +1,21 @@
 package com.paddle.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Map;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Map;
+@Getter
+@Setter
+@NoArgsConstructor
+public class TransactionItem {
 
-@Getter @Setter @NoArgsConstructor public class TransactionItem {
+  private ProductPrice price;
 
-    private ProductPrice price;
+  @JsonProperty("price_id")
+  private String priceId;
 
-    @JsonProperty("price_id") private String priceId;
-
-    private String quantity;
-    private Map<String, Object> proration;
+  private String quantity;
+  private Map<String, Object> proration;
 }

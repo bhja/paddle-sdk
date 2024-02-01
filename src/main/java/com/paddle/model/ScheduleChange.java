@@ -1,16 +1,20 @@
 package com.paddle.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+@Getter
+@Setter
+@NoArgsConstructor
+public class ScheduleChange {
 
-@Getter @Setter @NoArgsConstructor public class ScheduleChange {
+  private String action;
+  @JsonProperty("resume_at")
+  private LocalDateTime resumeAt;
 
-    private String action;
-    @JsonProperty("resume_at") private LocalDateTime resumeAt;
-
-    @JsonProperty("effective_at") private LocalDateTime effectiveAt;
+  @JsonProperty("effective_at")
+  private LocalDateTime effectiveAt;
 }

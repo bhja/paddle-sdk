@@ -5,9 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter @Getter @NoArgsConstructor public class UnitPrice {
+@Setter
+@Getter
+@NoArgsConstructor
+public class UnitPrice {
 
-    private String amount;
+  private String amount;
 
-    @JsonProperty("currency_code") private String currencyCode;
+  @JsonProperty("currency_code")
+  private String currencyCode;
 }
