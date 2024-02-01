@@ -1,6 +1,7 @@
 package com.paddle.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,5 +21,7 @@ public class Product extends PaddleBase {
   private String imageUrl;
 
   private String type;
+
+  private List<ProductPrice> prices;
 
 }

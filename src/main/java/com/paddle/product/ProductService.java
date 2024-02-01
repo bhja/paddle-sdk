@@ -14,6 +14,9 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 
+/**
+ * Paddle products service.
+ */
 public class ProductService extends ApiResource<Product> {
 
   public ProductService(HTTPConfig config) {
