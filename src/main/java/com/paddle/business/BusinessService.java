@@ -15,7 +15,7 @@ public class BusinessService extends ApiResource<Business> {
     super(config);
   }
 
-  public Business createBusiness(String customerId, BusinessCreateParams params)
+  public Business create(String customerId, BusinessCreateParams params)
       throws PaddleException {
     try {
       HttpRequest request = httpClient().request(
@@ -28,7 +28,7 @@ public class BusinessService extends ApiResource<Business> {
     }
   }
 
-  public Business getBusiness(String customerId, String businessId) throws PaddleException {
+  public Business retrieve(String customerId, String businessId) throws PaddleException {
     HttpRequest request = httpClient().request(
         URI.create(
             String.format("%s/%s/%s/%s", baseUrl(), CUSTOMERS, customerId, BUSINESS, businessId)),

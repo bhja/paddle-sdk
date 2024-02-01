@@ -17,7 +17,7 @@ public class AddressService extends ApiResource<Address> {
     super(config);
   }
 
-  public Address getAddress(String customerId, String addressId) throws PaddleException {
+  public Address retrieve(String customerId, String addressId) throws PaddleException {
     HttpRequest request = httpClient().request(
         URI.create(
             String.format("%s/%s/%s/%s", baseUrl(), CUSTOMERS, customerId, ADDRESSES, addressId)),
@@ -26,7 +26,7 @@ public class AddressService extends ApiResource<Address> {
     return get(request);
   }
 
-  public Address createAddress(String customerId, AddressCreateParams params)
+  public Address create(String customerId, AddressCreateParams params)
       throws PaddleException {
     try {
       HttpRequest request = httpClient().request(
