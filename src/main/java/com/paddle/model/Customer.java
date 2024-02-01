@@ -15,17 +15,11 @@ import java.util.Map;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Customer {
+public class Customer extends PaddleBase{
 
     private String id;
     private String name;
-    private String status;
-    @JsonProperty("custom_data")
-    private Map<String, Object> customData;
     private String email;
     private String locale;
-    @JsonProperty("created_at")
-    private LocalDateTime createdAt;
-    @JsonProperty("updated_at")
-    private LocalDateTime updatedAt;
+
 }

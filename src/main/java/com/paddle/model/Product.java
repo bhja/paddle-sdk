@@ -12,7 +12,7 @@ import java.util.Map;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Product {
+public class Product extends PaddleBase {
 
     private String id;
     private String name;
@@ -25,14 +25,9 @@ public class Product {
     private String imageUrl;
 
 
-    @JsonProperty("custom_data")
-    private Map<String, Object> customData;
-    private String status;
 
-    @JsonProperty("created_at")
-    private LocalDateTime createdAt;
+    private String type;
 
-    @JsonProperty("updated_at")
-    private LocalDateTime updatedAt;
+
 
 }

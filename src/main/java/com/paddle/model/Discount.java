@@ -11,9 +11,9 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Discount {
+public class Discount extends PaddleBase{
     private String id;
-    private String status;
+
     private String description;
 
     @JsonProperty("enabled_for_checkout")
@@ -36,15 +36,10 @@ public class Discount {
     private List<String> restrictTo;
     @JsonProperty("expires_at")
     private LocalDateTime expiresAt;
-
     @JsonProperty("times_used")
     private Integer timesUsed;
 
-    @JsonProperty("created_at")
-    private LocalDateTime createdAt;
 
-    @JsonProperty("updated_at")
-    private LocalDateTime updatedAt;
 
 }
 

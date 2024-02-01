@@ -5,6 +5,7 @@ import com.paddle.exception.PaddleClientException;
 import com.paddle.exception.PaddleException;
 import com.paddle.http.ApiResource;
 import com.paddle.http.HTTPConfig;
+import com.paddle.http.HttpMethod;
 import com.paddle.model.Customer;
 import com.paddle.model.PaddleResponse;
 
@@ -36,7 +37,8 @@ public class CustomerService
      */
     public Customer createCustomer(CustomerCreateParams params) throws PaddleException {
         try {
-            HttpRequest request = httpClient().request(URI.create(String.format("%s/%s", baseUrl(), CUSTOMERS)), POST,
+            HttpRequest request = httpClient().request(URI.create(String.format("%s/%s", baseUrl(), CUSTOMERS)),
+                                                       HttpMethod.POST.name(),
                                                        HttpRequest.BodyPublishers.ofString(getObjectMapper().writeValueAsString(params)));
             HttpResponse<String> response = httpClient().execute(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() == 201) {
@@ -56,7 +58,8 @@ public class CustomerService
         try {
             HttpRequest request = httpClient().request(httpClient().queryParameters(String.format("%s/%s", baseUrl(),
                                                                                                   CUSTOMERS),
-                                                                                    Map.of(CUSTOMER_ID, customerId)), GET,
+                                                                                    Map.of(CUSTOMER_ID, customerId)),
+                                                       HttpMethod.GET.name(),
                                                        HttpRequest.BodyPublishers.noBody());
             HttpResponse<String> response = httpClient().execute(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() == 200) {

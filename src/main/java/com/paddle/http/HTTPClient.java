@@ -13,6 +13,12 @@ public class HTTPClient {
     private final HttpClient client;
     public static final int DEFAULT_CONNECT_TIMEOUT = 30 * 1000;
     public static final int DEFAULT_READ_TIMEOUT = 80 * 1000;
+    private static  final String CONTENT_TYPE="Content-Type";
+    private static  final String ACCEPT = "Accept";
+    private  static  final String APPLICATION_JSON = "application/json";
+    private static  final String AUTHORIZATION = "Authorization";
+    private static  final String BEARER = "Bearer";
+
     private final String apiKey;
     private int readTimeOut ;
 
@@ -58,8 +64,9 @@ public class HTTPClient {
      */
     public HttpRequest request(URI uri, String method,
                                HttpRequest.BodyPublisher bodyPublisher) {
-        return request(uri, getHeaders(), method, bodyPublisher);
+        return request(uri, defaultHeaders(), method, bodyPublisher);
     }
+
 
     public HttpRequest request(URI uri, Map<String, String> headers, String method,
                                HttpRequest.BodyPublisher bodyPublisher) {
@@ -79,11 +86,10 @@ public class HTTPClient {
     }
 
 
-    private Map<String, String> getHeaders() {
-        return Map.of("Authorization", "Bearer " + this.apiKey,
-                      "Content-Type", "application/json",
-                      "Accept", "application/json");
-
+    private Map<String, String> defaultHeaders() {
+        return Map.of(AUTHORIZATION, BEARER + this.apiKey,
+                      CONTENT_TYPE, APPLICATION_JSON,
+                      ACCEPT, APPLICATION_JSON);
 
     }
 

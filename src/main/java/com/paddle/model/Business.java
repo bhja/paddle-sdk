@@ -11,7 +11,7 @@ import java.util.Map;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Business {
+public class Business extends PaddleBase{
     private String id;
     private String name;
 
@@ -21,11 +21,9 @@ public class Business {
     @JsonProperty("tax_identifier")
     private String taxIdentifier;
 
-    private String status;
+
+  private List<Contact> contacts;
 
 
-    private List<Contact> contacts;
-
-    private Map<String, Object> customData;
 
 }

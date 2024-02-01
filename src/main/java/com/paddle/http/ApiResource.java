@@ -9,10 +9,6 @@ import java.net.http.HttpResponse;
 
 public class ApiResource<T> {
     private final ObjectMapper objectMapper;
-    protected static final String POST = "POST";
-    protected static final String GET = "GET";
-    protected static final String PUT = "PUT";
-
     protected static final String ADDRESS_ID="address_id";
     protected static  final String CUSTOMER_ID="customer_id";
     protected static final String CUSTOMERS = "customers";

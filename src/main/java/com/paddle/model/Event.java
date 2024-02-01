@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 public class Event<T> {
 
     private T data;
-
     @JsonProperty("event_id")
     private String eventId;
     @JsonProperty("event_type")
