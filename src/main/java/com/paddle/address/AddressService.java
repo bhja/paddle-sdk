@@ -46,13 +46,8 @@ public class AddressService
                                                                                 CUSTOMERS,customerId, ADDRESSES)),
                                                        HttpMethod.POST.name(),
                                                        HttpRequest.BodyPublishers.ofString(getObjectMapper().writeValueAsString(params)));
-            HttpResponse<String> response = httpClient().execute(request, HttpResponse.BodyHandlers.ofString());
-            if (response.statusCode() == 201) {
-               return converterResponse(response);
-            } else {
-                throw new PaddleClientException(response.body(), response.statusCode());
-            }
-        } catch (IOException | InterruptedException e) {
+           return create(request);
+        } catch (IOException e) {
             throw new PaddleException(e);
         }
     }

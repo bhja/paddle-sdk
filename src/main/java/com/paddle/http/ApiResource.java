@@ -2,9 +2,12 @@ package com.paddle.http;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.paddle.exception.PaddleClientException;
 import com.paddle.exception.PaddleException;
 import com.paddle.model.PaddleResponse;
 
+import java.io.IOException;
+import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class ApiResource<T> {
@@ -12,6 +15,8 @@ public class ApiResource<T> {
     protected static final String ADDRESS_ID="address_id";
     protected static  final String CUSTOMER_ID="customer_id";
     protected static final String CUSTOMERS = "customers";
+
+    protected static  final String BUSINESS = "business";
 
     private final String baseUrl;
     private final HTTPClient client;
@@ -46,6 +51,20 @@ public class ApiResource<T> {
             throw new PaddleException(e);
         }
     }
+
+    protected T create(HttpRequest request) throws PaddleException{
+        try {
+            HttpResponse<String> response = httpClient().execute(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 201) {
+                return converterResponse(response);
+            } else {
+                throw new PaddleClientException(response.body(), response.statusCode());
+            }
+        }catch (IOException | InterruptedException e){
+            throw new PaddleException(e);
+        }
+    }
+
 
 
 }
