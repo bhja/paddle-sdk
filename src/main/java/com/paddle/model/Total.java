@@ -7,14 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Total {
-    @JsonProperty("sub_total")
-    private String subtotal;
+@Getter @Setter @NoArgsConstructor @JsonInclude(JsonInclude.Include.NON_NULL) @JsonIgnoreProperties(ignoreUnknown = true) public class Total {
+
+    @JsonProperty("sub_total") private String subtotal;
     private String discount;
     private String tax;
     private String total;

@@ -1,7 +1,7 @@
 package com.paddle.exception;
 
-public class PaddleClientException
-        extends RuntimeException {
+public class PaddleClientException extends RuntimeException {
+
     private final int code;
 
     public PaddleClientException(String message, int code) {

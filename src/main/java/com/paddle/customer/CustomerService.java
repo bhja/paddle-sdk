@@ -1,28 +1,20 @@
 package com.paddle.customer;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.paddle.exception.PaddleClientException;
 import com.paddle.exception.PaddleException;
 import com.paddle.http.ApiResource;
 import com.paddle.http.HTTPConfig;
 import com.paddle.http.HttpMethod;
 import com.paddle.model.Customer;
-import com.paddle.model.PaddleResponse;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.Map;
 
 /**
  * Customer related handler for Paddle
  */
 
-public class CustomerService
-        extends ApiResource<Customer> {
-
-
+public class CustomerService extends ApiResource<Customer> {
 
     public CustomerService(HTTPConfig config) {
         super(config);
@@ -37,9 +29,8 @@ public class CustomerService
      */
     public Customer createCustomer(CustomerCreateParams params) throws PaddleException {
         try {
-            HttpRequest request = httpClient().request(URI.create(String.format("%s/%s", baseUrl(), CUSTOMERS)),
-                                                       HttpMethod.POST.name(),
-                                                       HttpRequest.BodyPublishers.ofString(getObjectMapper().writeValueAsString(params)));
+            HttpRequest request = httpClient().request(URI.create(String.format("%s/%s", baseUrl(), CUSTOMERS)), HttpMethod.POST.name(),
+                    HttpRequest.BodyPublishers.ofString(getObjectMapper().writeValueAsString(params)));
             return create(request);
         } catch (IOException e) {
             throw new PaddleException(e);
@@ -47,12 +38,9 @@ public class CustomerService
     }
 
     public Customer getCustomer(String customerId) throws PaddleException {
-            HttpRequest request = httpClient().request(httpClient().queryParameters(String.format("%s/%s", baseUrl(),
-                                                                                                  CUSTOMERS),
-                                                                                    Map.of(CUSTOMER_ID, customerId)),
-                                                       HttpMethod.GET.name(),
-                                                       HttpRequest.BodyPublishers.noBody());
-            return get(request);
+        HttpRequest request = httpClient().request(URI.create(String.format("%s/%s/%s", baseUrl(), CUSTOMERS, customerId)),
+                HttpMethod.GET.name(), HttpRequest.BodyPublishers.noBody());
+        return get(request);
 
     }
 }

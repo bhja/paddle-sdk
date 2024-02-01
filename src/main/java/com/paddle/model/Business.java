@@ -6,23 +6,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
-import java.util.Map;
 
-@Getter
-@Setter
-@NoArgsConstructor
-public class Business extends PaddleBase {
+@Getter @Setter @NoArgsConstructor public class Business extends PaddleBase {
+
     private String id;
     private String name;
 
-    @JsonProperty("company_number")
-    private String companyNumber;
+    @JsonProperty("company_number") private String companyNumber;
 
-    @JsonProperty("tax_identifier")
-    private String taxIdentifier;
+    @JsonProperty("tax_identifier") private String taxIdentifier;
 
     private List<Contact> contacts;
-
-
 
 }

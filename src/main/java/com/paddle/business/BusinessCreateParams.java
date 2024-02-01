@@ -7,16 +7,14 @@ import java.util.List;
 import java.util.Map;
 
 public class BusinessCreateParams {
+
     private String name;
 
-    @JsonProperty("company_number")
-    private String companyNumber;
+    @JsonProperty("company_number") private String companyNumber;
 
-    @JsonProperty("tax_identifier")
-    private String taxIdentifier;
+    @JsonProperty("tax_identifier") private String taxIdentifier;
 
     private List<Contact> contacts;
 
-    @JsonProperty("custom_data")
-    private Map<String,Object> customData;
+    @JsonProperty("custom_data") private Map<String, Object> customData;
 }

@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.Map;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class PaddleResponse<T> {
+@Data @AllArgsConstructor @NoArgsConstructor public class PaddleResponse<T> {
 
     private T data;
     private Map<String, Object> meta;

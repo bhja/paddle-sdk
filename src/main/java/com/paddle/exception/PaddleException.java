@@ -1,8 +1,6 @@
 package com.paddle.exception;
 
-
-public class PaddleException
-        extends Exception {
+public class PaddleException extends Exception {
 
     private int code;
 

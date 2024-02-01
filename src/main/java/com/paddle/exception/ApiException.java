@@ -1,7 +1,7 @@
 package com.paddle.exception;
 
-public class ApiException
-        extends PaddleException {
+public class ApiException extends PaddleException {
+
     public ApiException(String message) {
         super(message);
     }

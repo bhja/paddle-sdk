@@ -7,21 +7,13 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@NoArgsConstructor
-public class Event<T> {
+@Getter @Setter @NoArgsConstructor public class Event<T> {
 
     private T data;
-    @JsonProperty("event_id")
-    private String eventId;
-    @JsonProperty("event_type")
-    private String eventType;
+    @JsonProperty("event_id") private String eventId;
+    @JsonProperty("event_type") private String eventType;
 
-    @JsonProperty("occurred_at")
-    private LocalDateTime occurredAt;
-    @JsonProperty("notification_id")
-    private String notificationId;
-
+    @JsonProperty("occurred_at") private LocalDateTime occurredAt;
+    @JsonProperty("notification_id") private String notificationId;
 
 }
