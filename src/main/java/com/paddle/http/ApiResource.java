@@ -4,20 +4,28 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.paddle.exception.PaddleClientException;
 import com.paddle.exception.PaddleException;
-import com.paddle.model.PaddleResponse;
+import com.paddle.model.QueryParams;
 import java.io.IOException;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-public class ApiResource<T> {
+public abstract class ApiResource<T> {
 
   private final ObjectMapper objectMapper;
-  protected static final String CUSTOMER_ID = "customer_id";
+
   protected static final String CUSTOMERS = "customers";
 
   protected static final String BUSINESS = "businesses";
 
   protected static final String PRODUCTS = "products";
+
+  protected static final String PRICES = "prices";
+  protected static final String DISCOUNT = "discounts";
+  protected static final String SUBSCRIPTION = "subscriptions";
+  protected static final String TRANSACTIONS = "transactions";
 
   private final String baseUrl;
   private final HTTPClient client;
@@ -41,24 +49,14 @@ public class ApiResource<T> {
     return baseUrl;
   }
 
-  protected T converterResponse(HttpResponse<String> response) throws PaddleException {
-    try {
-      PaddleResponse<T> paddleResponse = getObjectMapper().readValue(response.body(),
-          new TypeReference<>() {
-
-          });
-      return paddleResponse.getData();
-    } catch (Exception e) {
-      throw new PaddleException(e);
-    }
-  }
+  protected abstract T convertResponse(HttpResponse<String> response) throws PaddleException;
 
   protected T create(HttpRequest request) throws PaddleException {
     try {
       HttpResponse<String> response = httpClient().execute(request,
           HttpResponse.BodyHandlers.ofString());
       if (response.statusCode() == 201) {
-        return converterResponse(response);
+        return convertResponse(response);
       } else {
         throw new PaddleClientException(response.body(), response.statusCode());
       }
@@ -72,13 +70,24 @@ public class ApiResource<T> {
       HttpResponse<String> response = httpClient().execute(request,
           HttpResponse.BodyHandlers.ofString());
       if (response.statusCode() == 200) {
-        return converterResponse(response);
+        return convertResponse(response);
       } else {
         throw new PaddleClientException(response.body(), response.statusCode());
       }
     } catch (IOException | InterruptedException e) {
       throw new PaddleException(e);
     }
+  }
+
+  protected Map<String, Object> convertToMap(QueryParams params) {
+    Map<String, Object> map = objectMapper.convertValue(
+        params,
+        new TypeReference<Map<String, Object>>() {
+        }
+    );
+    return map.entrySet().stream()
+        .filter(e -> e.getValue() != null)
+        .collect(Collectors.toMap(Entry::getKey, Entry::getValue));
   }
 
 }

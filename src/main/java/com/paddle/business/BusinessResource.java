@@ -1,17 +1,20 @@
 package com.paddle.business;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.paddle.exception.PaddleException;
 import com.paddle.http.ApiResource;
 import com.paddle.http.HTTPConfig;
 import com.paddle.http.HttpMethod;
 import com.paddle.model.Business;
+import com.paddle.model.PaddleResponse;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
-public class BusinessService extends ApiResource<Business> {
+public class BusinessResource extends ApiResource<Business> {
 
-  public BusinessService(HTTPConfig config) {
+  public BusinessResource(HTTPConfig config) {
     super(config);
   }
 
@@ -35,5 +38,18 @@ public class BusinessService extends ApiResource<Business> {
         HttpMethod.GET.name(),
         HttpRequest.BodyPublishers.noBody());
     return get(request);
+  }
+
+  @Override
+  protected Business convertResponse(HttpResponse<String> response) throws PaddleException {
+    try {
+      PaddleResponse<Business> paddleResponse = getObjectMapper().readValue(response.body(),
+          new TypeReference<>() {
+
+          });
+      return paddleResponse.getData();
+    } catch (Exception e) {
+      throw new PaddleException(e);
+    }
   }
 }

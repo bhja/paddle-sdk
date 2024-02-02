@@ -14,7 +14,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductPrice {
+public class Price {
 
   private String id;
 
@@ -45,7 +45,7 @@ public class ProductPrice {
   @JsonProperty("tax_mode")
   private String taxMode;
 
-  private Map<String, Object> quantity;
+  private Quantity quantity;
 
   private String status;
 

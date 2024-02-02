@@ -1,16 +1,15 @@
 package com.paddle.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@SuperBuilder
 @AllArgsConstructor
 public class QueryParams {
 
@@ -20,5 +19,13 @@ public class QueryParams {
 
   @JsonProperty("per_page")
   private Integer perPage;
+
+  //active or archived are the only status allowed.
+  private String status;
+
+  private List<String> id;
+
+  private List<String> include;
+
 
 }

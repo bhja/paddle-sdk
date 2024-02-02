@@ -17,7 +17,7 @@ public class HTTPClient {
   private static final String ACCEPT = "Accept";
   private static final String APPLICATION_JSON = "application/json";
   private static final String AUTHORIZATION = "Authorization";
-  private static final String BEARER = "Bearer";
+  private static final String BEARER = "Bearer ";
 
   private final String apiKey;
   private final int readTimeOut;
@@ -38,7 +38,7 @@ public class HTTPClient {
    * @param queryParams
    * @return
    */
-  public URI queryParameters(String uri, Map<String, String> queryParams) {
+  public URI queryParameters(String uri, Map<String, Object> queryParams) {
     try {
       URI oldURI = new URI(uri);
       StringBuilder builder = new StringBuilder();
@@ -79,6 +79,7 @@ public class HTTPClient {
   }
 
   private Map<String, String> defaultHeaders() {
+
     return Map.of(AUTHORIZATION, BEARER + this.apiKey, CONTENT_TYPE, APPLICATION_JSON, ACCEPT,
         APPLICATION_JSON);
 

@@ -22,6 +22,6 @@ public class Product extends PaddleBase {
 
   private String type;
 
-  private List<ProductPrice> prices;
+  private List<Price> prices;
 
 }

@@ -17,9 +17,9 @@ import java.util.List;
 /**
  * Paddle products service.
  */
-public class ProductService extends ApiResource<Product> {
+public class ProductResource extends ApiResource<Product> {
 
-  public ProductService(HTTPConfig config) {
+  public ProductResource(HTTPConfig config) {
     super(config);
   }
 
@@ -65,6 +65,23 @@ public class ProductService extends ApiResource<Product> {
           HttpResponse.BodyHandlers.ofString());
       return get(request);
     } catch (IOException | InterruptedException e) {
+      throw new PaddleException(e);
+    }
+  }
+
+  public Product updateProduct(ProductUpdateParams update) {
+    return null;
+  }
+
+  @Override
+  protected Product convertResponse(HttpResponse<String> response) throws PaddleException {
+    try {
+      PaddleResponse<Product> paddleResponse = getObjectMapper().readValue(response.body(),
+          new TypeReference<>() {
+
+          });
+      return paddleResponse.getData();
+    } catch (Exception e) {
       throw new PaddleException(e);
     }
   }

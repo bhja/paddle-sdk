@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 public class Item {
 
-  private ProductPrice price;
+  private Price price;
   private String status;
   private int quantity;
 

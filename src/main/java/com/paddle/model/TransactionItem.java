@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class TransactionItem {
 
-  private ProductPrice price;
+  private Price price;
 
   @JsonProperty("price_id")
   private String priceId;

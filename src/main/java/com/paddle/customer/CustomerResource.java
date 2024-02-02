@@ -1,22 +1,38 @@
 package com.paddle.customer;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.paddle.exception.PaddleException;
 import com.paddle.http.ApiResource;
 import com.paddle.http.HTTPConfig;
 import com.paddle.http.HttpMethod;
 import com.paddle.model.Customer;
+import com.paddle.model.PaddleResponse;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 /**
  * Customer related handler for Paddle
  */
 
-public class CustomerService extends ApiResource<Customer> {
+public class CustomerResource extends ApiResource<Customer> {
 
-  public CustomerService(HTTPConfig config) {
+  public CustomerResource(HTTPConfig config) {
     super(config);
+  }
+
+  @Override
+  protected Customer convertResponse(HttpResponse<String> response) throws PaddleException {
+    try {
+      PaddleResponse<Customer> paddleResponse = getObjectMapper().readValue(response.body(),
+          new TypeReference<>() {
+
+          });
+      return paddleResponse.getData();
+    } catch (Exception e) {
+      throw new PaddleException(e);
+    }
   }
 
   /**
@@ -37,7 +53,7 @@ public class CustomerService extends ApiResource<Customer> {
     }
   }
 
-  public Customer getCustomer(String customerId) throws PaddleException {
+  public Customer retrieve(String customerId) throws PaddleException {
     HttpRequest request = httpClient().request(
         URI.create(String.format("%s/%s/%s", baseUrl(), CUSTOMERS, customerId)),
         HttpMethod.GET.name(), HttpRequest.BodyPublishers.noBody());

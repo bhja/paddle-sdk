@@ -1,19 +1,22 @@
 package com.paddle.address;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.paddle.exception.PaddleException;
 import com.paddle.http.ApiResource;
 import com.paddle.http.HTTPConfig;
 import com.paddle.http.HttpMethod;
 import com.paddle.model.Address;
+import com.paddle.model.PaddleResponse;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
-public class AddressService extends ApiResource<Address> {
+public class AddressResource extends ApiResource<Address> {
 
   private static final String ADDRESSES = "addresses";
 
-  public AddressService(HTTPConfig config) {
+  public AddressResource(HTTPConfig config) {
     super(config);
   }
 
@@ -39,4 +42,16 @@ public class AddressService extends ApiResource<Address> {
     }
   }
 
+  @Override
+  protected Address convertResponse(HttpResponse<String> response) throws PaddleException {
+    try {
+      PaddleResponse<Address> paddleResponse = getObjectMapper().readValue(response.body(),
+          new TypeReference<>() {
+
+          });
+      return paddleResponse.getData();
+    } catch (Exception e) {
+      throw new PaddleException(e);
+    }
+  }
 }
