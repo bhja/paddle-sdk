@@ -1,6 +1,7 @@
 package com.paddle.http;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.paddle.exception.PaddleClientException;
 import com.paddle.exception.PaddleException;
@@ -31,8 +32,11 @@ public abstract class ApiResource<T> {
   private final HTTPClient client;
 
   public ApiResource(HTTPConfig config) {
-    this.objectMapper = new ObjectMapper();
+    this.objectMapper = new ObjectMapper().configure(
+        DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    ;
     this.objectMapper.findAndRegisterModules();
+
     this.client = new HTTPClient(config);
     this.baseUrl = config.getBaseUrl();
   }
