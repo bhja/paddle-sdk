@@ -13,7 +13,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class PriceQueryParams extends QueryParams {
 
   @JsonProperty("product_id")
