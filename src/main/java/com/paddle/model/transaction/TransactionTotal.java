@@ -1,6 +1,7 @@
-package com.paddle.model;
+package com.paddle.model.transaction;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.paddle.model.Total;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.paddle.model;
+package com.paddle.model.enums;
 
 public enum EEffectiveFrom {
 

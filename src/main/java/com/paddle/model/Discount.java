@@ -1,6 +1,7 @@
 package com.paddle.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.paddle.model.enums.EDiscountType;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Getter;
@@ -21,7 +22,7 @@ public class Discount extends PaddleBase {
 
   private String code;
 
-  private DiscountType type;
+  private EDiscountType type;
   private String amount;
   @JsonProperty("currency_code")
   private String currencyCode;

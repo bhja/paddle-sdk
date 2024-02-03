@@ -1,6 +1,8 @@
-package com.paddle.model;
+package com.paddle.model.transaction;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.paddle.model.LineItem;
+import com.paddle.model.TaxRatesUsed;
 import java.util.List;
 
 public class TransactionDetail {

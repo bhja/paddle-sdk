@@ -2,14 +2,14 @@ package com.paddle.model.subscription;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.paddle.model.BillingDetails;
+import com.paddle.model.BillingPeriod;
 import com.paddle.model.Discount;
-import com.paddle.model.ECollectionMode;
 import com.paddle.model.IntervalPeriod;
 import com.paddle.model.ScheduleChange;
+import com.paddle.model.enums.ECollectionMode;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,6 +42,7 @@ public class Subscription {
   @JsonProperty("next_billed_at")
   private LocalDateTime nextBilledAt;
 
+
   @JsonProperty("billing_details")
   private BillingDetails billingDetails;
 
@@ -55,7 +56,7 @@ public class Subscription {
   private ScheduleChange scheduleChange;
 
   @JsonProperty("current_billing_period")
-  private Map<String, LocalDateTime> currentBillingPeriod;
+  private BillingPeriod currentBillingPeriod;
 
   @JsonProperty("customer_id")
   private String customerId;
@@ -67,5 +68,14 @@ public class Subscription {
 
   @JsonProperty("updated_at")
   private LocalDateTime updatedAt;
+
+  @JsonProperty("started_at")
+  private LocalDateTime startedAt;
+
+  @JsonProperty("canceled_at")
+  private LocalDateTime canceledAt;
+
+  @JsonProperty("trial_dates")
+  private BillingPeriod trialDates;
 
 }

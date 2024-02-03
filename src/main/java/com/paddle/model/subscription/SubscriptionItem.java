@@ -1,9 +1,9 @@
 package com.paddle.model.subscription;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.paddle.model.BillingPeriod;
 import com.paddle.model.Item;
 import java.time.LocalDateTime;
-import java.util.Map;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +16,7 @@ public class SubscriptionItem extends Item {
   private boolean recurring;
 
   @JsonProperty("trial_dates")
-  private Map<String, LocalDateTime> trialDates;
+  private BillingPeriod trialDates;
 
   @JsonProperty("next_billed_at")
   private LocalDateTime nextBilledAt;

@@ -1,6 +1,7 @@
-package com.paddle.model;
+package com.paddle.model.transaction;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.paddle.model.Payment;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;

@@ -2,11 +2,13 @@ package com.paddle.subscription;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.paddle.model.EOnPaymentFailure;
-import com.paddle.model.EProrationBillingMode;
 import com.paddle.model.ScheduleChange;
+import com.paddle.model.enums.EOnPaymentFailure;
+import com.paddle.model.enums.EProrationBillingMode;
 import java.time.LocalDateTime;
 import java.util.Map;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +16,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class SubscriptionUpdateParams {
 
   @JsonProperty("customer_id")
