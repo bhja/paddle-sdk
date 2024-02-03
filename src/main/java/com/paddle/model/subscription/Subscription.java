@@ -1,6 +1,11 @@
-package com.paddle.model;
+package com.paddle.model.subscription;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.paddle.model.BillingDetails;
+import com.paddle.model.Discount;
+import com.paddle.model.ECollectionMode;
+import com.paddle.model.IntervalPeriod;
+import com.paddle.model.ScheduleChange;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +34,7 @@ public class Subscription {
   private String addressId;
 
   @JsonProperty("billing_cycle")
-  private Map<String, Object> billingCycle;
+  private IntervalPeriod billingCycle;
 
   @JsonProperty("currency_code")
   private String currencyCode;
@@ -38,10 +43,10 @@ public class Subscription {
   private LocalDateTime nextBilledAt;
 
   @JsonProperty("billing_details")
-  private Map<String, Object> billingDetails;
+  private BillingDetails billingDetails;
 
   @JsonProperty("collection_mode")
-  private String collectionMode;
+  private ECollectionMode collectionMode = ECollectionMode.automatic;
 
   @JsonProperty("first_billed_at")
   private LocalDateTime firstBilledAt;

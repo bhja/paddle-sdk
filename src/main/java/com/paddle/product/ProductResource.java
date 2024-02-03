@@ -58,7 +58,7 @@ public class ProductResource extends ApiResource<Product> {
   public Product retrieve(String productId) throws PaddleException {
     try {
       HttpRequest request = httpClient().request(
-          URI.create(String.format("%s/%s%s", baseUrl(), PRODUCTS, productId)),
+          URI.create(String.format("%s/%s/%s", baseUrl(), PRODUCTS, productId)),
           HttpMethod.GET.name(),
           HttpRequest.BodyPublishers.noBody());
       HttpResponse<String> response = httpClient().execute(request,

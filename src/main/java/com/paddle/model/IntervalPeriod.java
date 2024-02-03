@@ -1,6 +1,6 @@
 package com.paddle.model;
 
-public class Interval {
+public class IntervalPeriod {
 
   private EInterval interval;
   private int frequency;

@@ -18,7 +18,7 @@ public class PriceQueryParams extends QueryParams {
   @JsonProperty("product_id")
   private String productId;
 
-  private boolean recurring;
+  private Boolean recurring;
 
   private String type;
 }

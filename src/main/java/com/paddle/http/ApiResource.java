@@ -83,6 +83,20 @@ public abstract class ApiResource<T> {
     }
   }
 
+  public T post(HttpRequest request) throws PaddleException {
+    try {
+      HttpResponse<String> response = httpClient().execute(request,
+          HttpResponse.BodyHandlers.ofString());
+      if (response.statusCode() == 200) {
+        return convertResponse(response);
+      } else {
+        throw new PaddleClientException(response.body(), response.statusCode());
+      }
+    } catch (IOException | InterruptedException e) {
+      throw new PaddleException(e);
+    }
+  }
+
   protected Map<String, Object> convertToMap(QueryParams params) {
     Map<String, Object> map = objectMapper.convertValue(
         params,
