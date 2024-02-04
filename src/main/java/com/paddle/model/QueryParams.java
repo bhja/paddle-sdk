@@ -25,7 +25,7 @@ public class QueryParams {
 
   private List<String> id;
 
-  private List<String> include;
+  private String include;
 
 
 }

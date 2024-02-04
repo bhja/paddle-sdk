@@ -25,7 +25,7 @@ public class PriceQueryParams extends QueryParams {
   @Builder
   public PriceQueryParams(String productId, Boolean recurring, String type, String after,
       String orderBy, Integer perPage, String status,
-      List<String> id, List<String> include) {
+      List<String> id, String include) {
     super(after, orderBy, perPage, status, id, include);
     this.productId = productId;
     this.recurring = recurring;

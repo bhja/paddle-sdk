@@ -13,6 +13,7 @@ import java.net.URI;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Paddle products service.
@@ -35,9 +36,20 @@ public class ProductResource extends ApiResource<Product> {
   }
 
   public List<Product> list() throws PaddleException {
+    return list(null);
+  }
+
+  public List<Product> list(ProductQueryParams params) throws PaddleException {
     try {
+      Map<String, Object> map = convertToMap(params);
+      URI uri;
+      if (map != null && !map.isEmpty()) {
+        uri = httpClient().queryParameters(String.format("%s/%s", baseUrl(), PRODUCTS), map);
+      } else {
+        uri = URI.create(String.format("%s/%s", baseUrl(), PRICES));
+      }
       HttpRequest request = httpClient().request(
-          URI.create(String.format("%s/%s", baseUrl(), PRODUCTS)), HttpMethod.GET.name(),
+          uri, HttpMethod.GET.name(),
           HttpRequest.BodyPublishers.noBody());
       HttpResponse<String> response = httpClient().execute(request,
           HttpResponse.BodyHandlers.ofString());
@@ -69,6 +81,7 @@ public class ProductResource extends ApiResource<Product> {
     }
   }
 
+  //TODO - Implementation pending
   public Product updateProduct(ProductUpdateParams update) {
     return null;
   }

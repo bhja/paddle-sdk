@@ -22,8 +22,8 @@ public class ProductQueryParams extends QueryParams {
   @Builder
   public ProductQueryParams(String type, String taxCategory, String after, String orderBy,
       Integer perPage,
-      List<String> ids, String status, List<String> includes) {
-    super(after, orderBy, perPage, status, ids, includes);
+      List<String> ids, String status, String include) {
+    super(after, orderBy, perPage, status, ids, include);
     this.type = type;
     this.taxCategory = taxCategory;
   }
